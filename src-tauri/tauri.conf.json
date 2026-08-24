@@ -10,8 +10,24 @@
     "frontendDist": "../dist"
   },
   "app": {
-    "windows": [{ "label": "main", "title": "XQC", "width": 1200, "height": 700, "minWidth": 900, "minHeight": 600, "center": true }],
-    "security": { "csp": null }
+    "windows": [
+      {
+        "label": "main",
+        "title": "XQC",
+        "width": 1200,
+        "height": 700,
+        "minWidth": 900,
+        "minHeight": 600,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
   },
-  "bundle": { "active": true, "targets": ["nsis"], "icon": ["icons/icon.ico"] }
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": []
+  }
 }
