@@ -1,0 +1,2 @@
+pub fn encrypt(data: &[u8]) -> Vec<u8> { data.to_vec() }
+pub fn decrypt(data: &[u8]) -> Vec<u8> { data.to_vec() }
