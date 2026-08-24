@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22' # Обновили до 22, чтобы убрать предупреждение
           cache: 'npm'
       
       - name: Install Rust
@@ -28,12 +28,7 @@ jobs:
           workspaces: './src-tauri -> target'
       
       - name: Install frontend dependencies
-        run: npm ci
-      
-      - name: Install WebView2
-        run: |
-          Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/p/?LinkId=2124703' -OutFile 'MicrosoftEdgeWebview2Setup.exe'
-          Start-Process -Wait -FilePath '.\MicrosoftEdgeWebview2Setup.exe' -ArgumentList '/silent /install'
+        run: npm install # <-- ВОТ ГЛАВНОЕ ИСПРАВЛЕНИЕ (было npm ci)
       
       - name: Build Tauri app
         run: npm run tauri build
