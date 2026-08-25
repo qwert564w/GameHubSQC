@@ -27,6 +27,19 @@ jobs:
       - name: Install frontend dependencies
         run: npm install
         
+      - name: Generate app icons
+        run: |
+          New-Item -ItemType Directory -Force -Path "src-tauri/icons"
+          Add-Type -AssemblyName System.Drawing
+          $bmp = New-Object System.Drawing.Bitmap(1024,1024)
+          $graphics = [System.Drawing.Graphics]::FromImage($bmp)
+          $graphics.Clear([System.Drawing.Color]::FromArgb(102,192,244))
+          $bmp.Save("$PWD\src-tauri\icons\icon.png", [System.Drawing.Imaging.ImageFormat]::Png)
+          $graphics.Dispose()
+          $bmp.Dispose()
+          npx tauri icon src-tauri/icons/icon.png
+        shell: pwsh
+        
       - name: Build Tauri app
         run: npm run tauri build
         
